@@ -33,9 +33,9 @@ func (m *MockWeighter) EXPECT() *MockWeighterMockRecorder {
 }
 
 // Weight mocks base method
-func (m *MockWeighter) Weight() int32 {
+func (m *MockWeighter) Weight() int {
 	ret := m.ctrl.Call(m, "Weight")
-	ret0, _ := ret[0].(int32)
+	ret0, _ := ret[0].(int)
 	return ret0
 }
 
