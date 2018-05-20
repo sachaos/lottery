@@ -5,6 +5,8 @@ import (
 	"time"
 )
 
+//go:generate mockgen -package lottery -source lottery.go -destination lottery_mock.go
+
 type Weighter interface {
 	Weight() int32
 }
