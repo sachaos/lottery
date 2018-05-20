@@ -8,7 +8,7 @@ import (
 //go:generate mockgen -package lottery -source lottery.go -destination lottery_mock.go
 
 type Weighter interface {
-	Weight() int32
+	Weight() int
 }
 
 type Lottery interface {
@@ -30,14 +30,14 @@ func (l lottery) Draw(weighters []Weighter) int {
 		return -1
 	}
 
-	totalWeight := int32(0)
+	totalWeight := 0
 	for _, weighter := range weighters {
 		totalWeight += weighter.Weight()
 	}
 
-	lot := l.r.Int31n(totalWeight)
+	lot := l.r.Intn(totalWeight)
 
-	tmp := int32(0)
+	tmp := 0
 	for i, weighter := range weighters {
 		tmp += weighter.Weight()
 		if lot < tmp {
